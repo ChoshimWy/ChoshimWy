@@ -5,14 +5,16 @@
 * **在子类中实现了CodingKeys枚举来指定子类属性的编码键**.
 
 此外,我们还重写了`init(from:)`和`encode(to:)`方法，以便在解码和编码时正确处理子类属性.
+
+创建一个`Personal`类
 ```Swift
-/// Personal 父类
 class Personal: Codable {
      var name: String = "Xiao Ming"
      var age: Int = 21
 }
-
-/// 继承Personal的子类
+```
+继承`Personal`的子类
+```Swift
 class Employee: Personal {
     var uuid: String = UUID().uuidString
     
@@ -38,7 +40,9 @@ class Employee: Personal {
         try super.encode(to: encoder)
     }
 }
-
+```
+测试`Encoder`方法,如果子类没有重写'encode'方法 此处的encode只会编码父类属性
+```Swift
 func testEncoder() {
      let employee = Employee()
         do {
@@ -50,7 +54,9 @@ func testEncoder() {
         
         }
 }
-
+```
+测试`Decoder`, 如果子类没有重写'init(from:)', 此处只会解码父类属性
+```Swift
 func testDecoder() {
             guard let data = """
 {
