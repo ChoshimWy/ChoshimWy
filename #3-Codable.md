@@ -41,7 +41,7 @@ class Employee: Personal {
     }
 }
 ```
-测试`Encoder`方法,如果子类没有重写'encode'方法 此处的encode只会编码父类属性
+测试`Encoder`方法,如果子类没有重写`encode`方法 此处的`encode`只会编码父类属性
 ```Swift
 func testEncoder() {
      let employee = Employee()
@@ -55,7 +55,7 @@ func testEncoder() {
         }
 }
 ```
-测试`Decoder`, 如果子类没有重写'init(from:)', 此处只会解码父类属性
+测试`Decoder`, 如果子类没有重写`init(from:)`, 此处只会解码父类属性
 ```Swift
 func testDecoder() {
             guard let data = """
